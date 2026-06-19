@@ -5,8 +5,13 @@ INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="HandsBusy"
 LABEL="eu.r3pr3ss10n.handsbusy"
 PLIST_PATH="$HOME/Library/LaunchAgents/$LABEL.plist"
+PLIST_DIR="$HOME/Library/LaunchAgents/"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BINARY_SRC="$SCRIPT_DIR/$BINARY_NAME"
+
+if [ ! -f "$PLIST_DIR" ]; then
+    mkdir -p "$PLIST_DIR"
+fi
 
 if [ ! -f "$BINARY_SRC" ]; then
     echo "Error: $BINARY_NAME not found next to this script"
